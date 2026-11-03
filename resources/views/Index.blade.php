@@ -32,24 +32,20 @@
         </div>
 
         <div class="m-8">
-            <label for="password" class="block mb-2.5 text-sm font-bold text-heading">Tu contraseña</label>
+            <label for="password" class="block mb-2.5 text-sm font-titulo font-bold text-heading">Tu contraseña</label>
             <input type="password" id="password"
                 class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
                 placeholder="••••••••" required />
         </div>
 
         <label for="remember" class="flex items-center m-8">
-            <!--<input id="remember" type="checkbox" value=""
-                class="w-4 h-4 border border-default-medium rounded-xs bg-nieve"
-                required />
-            <p class="ms-2 text-sm font-medium text-heading select-none">I agree with the <a href="#"
-                    class="text-fg-brand hover:underline">terms and conditions</a>.</p>-->
+            
             <p class="ms-2 text-sm font-cuerpo text-lavanda text-heading select-none"><a href="#"
                     class="font-bold text-fg-brand hover:underline">¿Has olvidado la contraseña?</a></p>
         </label>
 
         <button type="submit"
-            class="m-8  flex justify-self-center text-carbon bg-lavanda box-border border-2 border-carbon rounded-md hover:bg-turquesa shadow-xs font-bold leading-5 rounded-base font-titulo text-sm px-4 py-2.5 focus:outline-none">Entrar</button>
+            class="m-8  flex justify-self-center text-nieve bg-lavanda box-border border-2 border-carbon rounded-md hover:bg-turquesa shadow-xs font-bold leading-5 rounded-base font-titulo text-sm px-4 py-2.5 focus:outline-none">Entrar</button>
 
             <label for="cuenta nueva" class="flex justify-self-center m-8">
             <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a href="#"
