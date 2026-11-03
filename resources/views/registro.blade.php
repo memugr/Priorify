@@ -24,7 +24,7 @@
         <div class="m-8">
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Tu email</label>
             <input type="email" id="email"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="tuemail@gmail.com" required />
         </div>
 
@@ -32,14 +32,14 @@
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Nombre de
                 usuario</label>
             <input type="email" id="email"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="Tu nombre" required />
         </div>
 
         <div class="m-8">
             <label for="password" class="block mb-2.5 text-sm font-titulo font-bold text-heading">Tu contraseña</label>
             <input type="password" id="password"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="••••••••" required />
         </div>
 
@@ -47,7 +47,7 @@
             <label for="password" class="block mb-2.5 text-sm font-titulo font-bold text-heading">Confirma tu
                 contraseña</label>
             <input type="password" id="password"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="••••••••" required />
         </div>
 
