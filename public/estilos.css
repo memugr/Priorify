@@ -1,0 +1,18 @@
+@theme {
+    --color-turquesa: #97dfd3;
+    --color-lavanda: #be8be7;
+    --color-chicle: #efafed;
+    --color-mostaza: #eccf90;
+    --color-carbon: #242124;
+    --color-nieve: #fefefa;
+    --color-marfil: #fdf5e6;
+    --color-nube_triste: #dcdcdd;
+    --color-cielo: #b0d2e8;
+    --color-atardecer: #ffcc8d;
+    --color-coral: #fbaaba;
+    --color-verde_hada: #c5ef9f;
+    --color-gris_vacio: #777077;
+
+    --font-titulo: 'capriola';
+    --font-cuerpo: 'inter';
+}
