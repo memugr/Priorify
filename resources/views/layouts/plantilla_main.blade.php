@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Priorify</title>
-    <link rel="icon" type="image/svg+xml" href="/public/img/favicon.webp">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.webp">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
@@ -208,7 +208,7 @@
     </aside>
 
     <div class="p-4 sm:ml-64  mt-14">
-        <div class="p-4 border-1 border-carbon border-dashed rounded-base"> <!-- RECORDAR PORNER EL BORDE TRANSPARENTE -->
+        <div class="p-4 border border-carbon border-dashed rounded-base"> <!-- RECORDAR PORNER EL BORDE TRANSPARENTE -->
 
 
             <div class="grid grid-cols-3 gap-4 mb-4">

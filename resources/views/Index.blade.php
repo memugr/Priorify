@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Priorify</title>
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.webp">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="public/temas/temas.css">
@@ -18,23 +19,23 @@
 
 <body class="bg-marfil">
 
-    <div>
-        <img class="m-8" src="/img/logo_alto.webp" alt="Logo Priorify">
-        <h2 class="m-8 font-titulo font-bold text-lavanda text-xl">No te preocupes,<br>¡Ocúpate!</h2>
+    <div class="flex justify-items-center items-center justify-self-center flex-col">
+        <img class="m-8 w-24" src="/img/logo_alto.webp" alt="Logo Priorify">
+        <h2 class="text-center font-titulo font-bold text-lavanda text-xl">No te preocupes,<br>¡Ocúpate!</h2>
     </div>
 
     <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve">
         <div class="m-8">
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Tu email</label>
             <input type="email" id="email"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="tuemail@gmail.com" required />
         </div>
 
         <div class="m-8">
             <label for="password" class="block mb-2.5 text-sm font-titulo font-bold text-heading">Tu contraseña</label>
             <input type="password" id="password"
-                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="••••••••" required />
         </div>
 
