@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-class IndexController extends Controller
+class LoginController extends Controller
 {
     public function show()
     {
-        return view('index'); 
+        return view('login'); 
     }
 
 }
