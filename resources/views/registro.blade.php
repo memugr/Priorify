@@ -18,6 +18,9 @@
 
 <body class="bg-marfil">
 
+    <div class="flex justify-center">
+        <img class="m-8" src="/img/logo_largo.webp" alt="Logo Priorify">
+    </div>
 
 
     <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve">
