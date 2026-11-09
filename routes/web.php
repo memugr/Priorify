@@ -13,7 +13,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('usuario', UsuarioController::class);
 });
 
-
+Route::resource('usuario', UsuarioController::class);
 Route::get('/plantilla', [PlantillaController::class, 'show']);
 Route::get('/login',[LoginController::class,'show']);
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
