@@ -24,7 +24,7 @@
         <h2 class="text-center font-titulo font-bold text-lavanda text-xl">No te preocupes,<br>¡Ocúpate!</h2>
     </div>
 
-    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve">
+    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve" action="{{ route('caca') }}" method="get">
         <div class="m-8">
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Tu email</label>
             <input type="email" id="email"
@@ -40,17 +40,20 @@
         </div>
 
         <label for="remember" class="flex items-center m-8">
-            
+
             <p class="ms-2 text-sm font-cuerpo text-lavanda text-heading select-none"><a href="#"
                     class="font-bold text-fg-brand hover:underline">¿Has olvidado la contraseña?</a></p>
         </label>
 
         <button type="submit"
-            class="m-8  flex justify-self-center text-nieve bg-lavanda box-border border-2 border-carbon rounded-md hover:bg-turquesa shadow-xs font-bold leading-5 rounded-base font-titulo text-sm px-4 py-2.5 focus:outline-none">Entrar</button>
+            class="m-8  flex justify-self-center text-nieve bg-lavanda box-border border-2 border-carbon rounded-md hover:bg-turquesa shadow-xs 
+            font-bold leading-5 rounded-base font-titulo text-sm px-4 py-2.5 focus:outline-none">Entrar</button>
 
-            <label for="cuenta nueva" class="flex justify-self-center m-8">
-            <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a href=#
-                    class="text-lavanda text-fg-brand font-cuerpo font-bold underline hover:text-carbon">Regístrate</a>.</p>
+        <label for="cuenta nueva" class="flex justify-self-center m-8">
+            <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a
+                    href="#"
+                    class="text-lavanda text-fg-brand font-cuerpo font-bold underline hover:text-carbon">Regístrate</a>.
+            </p>
         </label>
     </form>
 
