@@ -28,7 +28,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'nombre_usuario' => 'required',
+        'email'          => 'required|email',
+        'password'       => 'required|confirmed', // <--- Exige que password coincida con password_confirmation
+    ], [
+        'password.confirmed' => 'Las contraseñas no coinciden.',
+    ]
+    
+    );
+
+        $usuario = new Usuario();
+        $usuario->nombre_usuario = $request->input('nombre_usuario');
+        $usuario->email = $request->input('email');
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->fecha_creacion = now();
+        $usuario->save();
+
+        return redirect()->back()->with('exito', '¡Te has registrado correctamente! Ya puedes iniciar sesión.');
     }
 
     /**

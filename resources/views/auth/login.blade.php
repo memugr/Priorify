@@ -49,7 +49,7 @@
             class="m-8  flex justify-self-center text-nieve bg-lavanda box-border border-2 border-carbon rounded-md hover:bg-turquesa shadow-xs font-bold leading-5 rounded-base font-titulo text-sm px-4 py-2.5 focus:outline-none">Entrar</button>
 
             <label for="cuenta nueva" class="flex justify-self-center m-8">
-            <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a href="#"
+            <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a href=#
                     class="text-lavanda text-fg-brand font-cuerpo font-bold underline hover:text-carbon">Regístrate</a>.</p>
         </label>
     </form>
