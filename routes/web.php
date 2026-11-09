@@ -20,5 +20,5 @@ Route::get('/plantilla', [PlantillaController::class, 'show']);
 Route::get('/login',[LoginController::class,'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::get('/caca', [CacaController::class, 'showCaca'])->name('caca');
-Route::get('/register', [RegistroController::class, 'showRegistro'])->name('registro');
+Route::get('/registro', [RegistroController::class, 'showRegistro'])->name('registro');
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
