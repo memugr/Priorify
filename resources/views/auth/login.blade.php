@@ -24,7 +24,7 @@
         <h2 class="text-center font-titulo font-bold text-lavanda text-xl">No te preocupes,<br>¡Ocúpate!</h2>
     </div>
 
-    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve" action="{{ route('caca') }}" method="get">
+    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve" action="{{ route('index') }}" method="get">
         <div class="m-8">
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Tu email</label>
             <input type="email" id="email"
@@ -51,7 +51,7 @@
 
         <label for="cuenta nueva" class="flex justify-self-center m-8">
             <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿No tienes cuenta? <a
-                    href="#"
+                    href="{{ route('registro') }}"
                     class="text-lavanda text-fg-brand font-cuerpo font-bold underline hover:text-carbon">Regístrate</a>.
             </p>
         </label>

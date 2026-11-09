@@ -72,7 +72,7 @@
 
         <label for="cuenta nueva" class="flex justify-self-center m-8">
             <p class="ms-2 text-sm font-bold text-heading text-carbon font-cuerpo select-none">¿Ya tienes cuenta? <a
-                    href="route('auth.login')"
+                    href="{{ route('login') }}"
                     class="text-lavanda text-fg-brand font-cuerpo font-bold underline hover:text-carbon">Inicia
                     sesión</a>.
             </p>

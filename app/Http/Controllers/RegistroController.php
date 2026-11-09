@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class RegistroController extends Controller
 {
-    public function show()
+    public function showRegistro()
     {
-        return view('registro');
+        return view('auth.registro');
     }
 }
