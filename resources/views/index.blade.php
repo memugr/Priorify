@@ -126,7 +126,7 @@
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{ route('proyectos.index') }}"
                             class="flex items-center px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand">
                             <span class="ms-3">Ver proyectos</span>
                         </a>
@@ -159,26 +159,19 @@
                         <div class="flex flex-wrap items-center gap-6">
 
                             <!-- Cercador -->
-                            <form class="flex-1 min-w-[350px]">
+                            <form class="flex-1" method="GET" action="{{ route('proyectos.index') }}">
                                 <div class="relative">
-                                    <!-- Lupa -->
-                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg class="w-5 h-5 text-lavanda" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24">
 
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                                                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-                                        </svg>
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <img src="{{ asset('img/lupa.svg') }}" alt="Lupa" class="w-5 h-5">
                                     </div>
 
-                                    <!-- Input -->
-                                    <input type="search" placeholder="Buscar tarea..."
+                                    <input type="search" name="buscar" value="{{ request('buscar') }}"
+                                        placeholder="Buscar proyectos..."
                                         class="w-full h-[60px] pl-10 pr-28 border-3 border-carbon rounded-md bg-nieve focus:outline-none" />
 
-                                    <!-- Botó dins l'input -->
-                                    <button type="submit" href="#"
-                                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5
-                                                bg-turquesa border-2 border-carbon rounded-md hover:bg-mostaza font-semibold text-sm">
+                                    <button type="submit"
+                                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-turquesa border-2 border-carbon rounded-md hover:bg-mostaza font-semibold text-lg">
                                         Cercar
                                     </button>
                                 </div>
