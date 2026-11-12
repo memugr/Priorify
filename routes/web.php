@@ -9,12 +9,11 @@ use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/', function () {
-    return view('auth.login'); });
-
-    Route::resource('usuario', UsuarioController::class);
+    Route::get('/', function () { return view('auth.login'); });
+    
 });
 
+//Rutas públicas
 Route::resource('usuario', UsuarioController::class);
 Route::get('/plantilla', [PlantillaController::class, 'show']);
 Route::get('/login',[LoginController::class,'show'])->name('login');

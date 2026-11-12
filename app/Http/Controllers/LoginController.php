@@ -19,25 +19,30 @@ class LoginController extends Controller
         //$usuario->fecha_creacion=Carbon::now(); //clase de laravel para trabajar con fechas.
         $usuario->save();*/
 
-
-        return view('auth.login'); 
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
         $usuario = Usuario::where('email', $request->input('email'))->first();
         if ($usuario && Hash::check($request->input('password'), $usuario->password)) {
+            $response = redirect('index');
             Auth::login($usuario);
-            $response = redirect('/');
+
+            $request->session()->regenerate();
         } else {
             session()->flash('Error', 'Credenciales no válidas.');
             $response = redirect()->back()->withInput();
         }
-
         return $response;
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
+
 }
-
-
-
-
