@@ -23,17 +23,19 @@ class LoginController extends Controller
         return view('auth.login'); 
     }
 
-    public function login(Request $request) {
-        $usuario = Usuario::where('email',$request ->input('email'))->first();
-        if($usuario && Hash::check($request ->input('password'),$usuario ->password)){
-            $response = redirect ('/login');
+    public function login(Request $request)
+    {
+        $usuario = Usuario::where('email', $request->input('email'))->first();
+        if ($usuario && Hash::check($request->input('password'), $usuario->password)) {
             Auth::login($usuario);
-
-        }else{
+            $response = redirect('/');
+        } else {
             session()->flash('Error', 'Credenciales no válidas.');
-            $response=redirect()->back()->withInput();}
-            return $response;
+            $response = redirect()->back()->withInput();
         }
+
+        return $response;
+    }
 }
 
 
