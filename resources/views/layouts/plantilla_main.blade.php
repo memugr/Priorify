@@ -64,7 +64,7 @@
                             id="dropdown-user">
                             <div class="px-4 py-3 border-b border-default-medium" role="none">
                                 <p class="text-sm font-medium font-titulo text-carbon text-heading" role="none">
-                                    Rigoberto Catares
+                                
                                 </p>
                                 <p class="text-sm text-cuerpo truncate" role="none">
                                     Rigotares@gmail.com
