@@ -12,18 +12,19 @@ class ProyectoController extends Controller
      */
     public function index(Request $request)
     {
-        $buscar = $request->input('buscar');
+        $query = Proyecto::query();
 
-        $proyectos = Proyecto::query()
-            ->when($buscar, function ($query) use ($buscar) {
-                $query->where(function ($q) use ($buscar) {
-                    $q->where('nombre', 'like', "%{$buscar}%")
-                        ->orWhere('descripcion', 'like', "%{$buscar}%");
-                });
-            })
-            ->get();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
 
-        return view('proyectos', compact('proyectos', 'buscar'));
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', '%' . $search . '%')
+                    ->orWhere('descripcion', 'like', '%' . $search . '%');
+            });
+        }
+
+        $proyectos = $query->orderBy('nombre', 'asc')->get();
+        return view('proyectos', compact('proyectos', 'request'));
     }
 
     /**

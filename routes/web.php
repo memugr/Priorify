@@ -22,4 +22,4 @@ Route::get('/register', [RegistroController::class, 'showRegistro'])->name('regi
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
 
 // PROYECTOS 
-Route::get('/proyectos', [ProyectoController::class, 'index'])->name('proyectos.index'); // Mostrar lista de proyectos
+Route::resource('/proyectos', ProyectoController::class);

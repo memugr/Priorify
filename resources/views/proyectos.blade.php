@@ -12,7 +12,7 @@
             </div>
 
             <!-- Input -->
-            <input type="search" name="buscar" value="{{ request('buscar') }}" placeholder="Buscar proyectos..."
+            <input type="search" name="search" value="{{ request('search') }}" placeholder="Buscar proyectos..."
                 class="w-full h-[60px] pl-10 pr-28 border-3 border-carbon rounded-md bg-nieve focus:outline-none" />
 
             <!-- Botó dins l'input -->
@@ -25,8 +25,18 @@
     </form>
 
     <!-- Llista de projectes -->
-    <div class="space-y-6 mt-8 ">
-        @forelse ($proyectos as $proyecto)
+    <div class="space-y-6 mt-8">
+    @if ($proyectos->isEmpty())
+        <div class="bg-nieve border-3 border-carbon rounded-lg p-8 text-center">
+            <h2 class="font-titulo text-2xl font-bold mb-2">
+                No hay proyectos
+            </h2>
+            <p>
+                Crea tu primer proyecto para empezar.
+            </p>
+        </div>
+    @else
+        @foreach ($proyectos as $proyecto)
             <div
                 class="w-[90%] mx-auto bg-turquesa border-3 border-carbon rounded-lg p-5 shadow-[6px_6px_0px_#C693FF] 
                         hover:translate-y-[-2px] transition-all">
@@ -47,17 +57,7 @@
                     </div>
                 </div>
             </div>
-
-        @empty
-            <div class="bg-nieve border-3 border-carbon rounded-lg p-8 text-center">
-                <h2 class="font-titulo text-2xl font-bold mb-2">
-                    No hay proyectos
-                </h2>
-                <p>
-                    Crea tu primer proyecto para empezar.
-                </p>
-            </div>
-        @endforelse
-
-    </div>
+        @endforeach
+    @endif
+</div>
 @endsection
