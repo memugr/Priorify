@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProyectoController extends Controller
 {
@@ -41,6 +42,15 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         //
+        $proyecto = new Proyecto();
+        $proyecto->nombre = Str::ucfirst(trim($request->input('nombre'))); 
+        $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+        //Str: primer caracter en mayúscula y trim para eliminar espacios al inicio y final
+        $proyecto->fecha_creacion = now();
+        $proyecto->fecha_entrega = $request->input('fecha_entrega');
+        $proyecto->save();
+
+        return redirect()->route('proyectos.index')->with('success', '¡Proyecto creado!');
     }
 
     /**

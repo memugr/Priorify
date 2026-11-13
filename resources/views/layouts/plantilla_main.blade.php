@@ -64,7 +64,7 @@
                             id="dropdown-user">
                             <div class="px-4 py-3 border-b border-default-medium" role="none">
                                 <p class="text-sm font-medium font-titulo text-carbon text-heading" role="none">
-                                
+
                                 </p>
                                 <p class="text-sm text-cuerpo truncate" role="none">
                                     Rigotares@gmail.com
@@ -116,10 +116,11 @@
                     </li>
 
                     <li>
-                        <a href="#"
-                            class="flex items-center px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand">
+                        <button
+                            class="flex items-center w-full px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand cursor-pointer"
+                            type="button" data-modal-target="crud-proyecto-modal" data-modal-toggle="crud-proyecto-modal">
                             <span class="ms-3">Crear proyecto</span>
-                        </a>
+                        </button>
                     </li>
 
                     <li>
@@ -149,6 +150,9 @@
             @yield('content')
         </div>
     </div>
+
+    <!-- Modal Crear Proyecto -->
+    @include('modals.crearProyecto')
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     @stack('scripts')
