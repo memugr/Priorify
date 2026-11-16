@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Proyecto;
+use App\Models\Usuario_proyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProyectoController extends Controller
 {
@@ -12,18 +16,19 @@ class ProyectoController extends Controller
      */
     public function index(Request $request)
     {
-        $buscar = $request->input('buscar');
+        $query = Proyecto::query();
 
-        $proyectos = Proyecto::query()
-            ->when($buscar, function ($query) use ($buscar) {
-                $query->where(function ($q) use ($buscar) {
-                    $q->where('nombre', 'like', "%{$buscar}%")
-                        ->orWhere('descripcion', 'like', "%{$buscar}%");
-                });
-            })
-            ->get();
+        if ($request->filled('search')) {
+            $search = $request->input('search');
 
-        return view('proyectos', compact('proyectos', 'buscar'));
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', '%' . $search . '%')
+                    ->orWhere('descripcion', 'like', '%' . $search . '%');
+            });
+        }
+
+        $proyectos = $query->orderBy('nombre', 'asc')->get();
+        return view('proyectos', compact('proyectos', 'request'));
     }
 
     /**
@@ -40,6 +45,21 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         //
+        $proyecto = new Proyecto();
+        $proyecto->nombre = Str::ucfirst(trim($request->input('nombre'))); 
+        $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+        //Str: primer caracter en mayúscula y trim para eliminar espacios al inicio y final
+        $proyecto->fecha_creacion = now();
+        $proyecto->fecha_entrega = $request->input('fecha_entrega');
+        $proyecto->save();
+
+        $usuarioProyecto = new Usuario_proyecto();
+        $usuarioProyecto->id_usuario_proyecto = Auth::id(); 
+        $usuarioProyecto->id_proyecto_usuario = $proyecto->id_proyecto;
+        $usuarioProyecto->id_rol_proyecto = 1; // Asignar el rol de administrador (1) al usuario que crea el proyecto
+        $usuarioProyecto->save();
+
+        return redirect()->route('proyectos.index')->with('success', '¡Proyecto creado!');
     }
 
     /**
@@ -48,6 +68,7 @@ class ProyectoController extends Controller
     public function show(Proyecto $proyecto)
     {
         //
+        return view('proyecto', compact('proyecto'));
     }
 
     /**
@@ -64,6 +85,12 @@ class ProyectoController extends Controller
     public function update(Request $request, Proyecto $proyecto)
     {
         //
+        $proyecto->nombre = Str::ucfirst(trim($request->input('nombre')));
+        $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+        $proyecto->fecha_entrega = $request->input('fecha_entrega');
+        $proyecto->save();  
+
+        return redirect()->route('proyectos.show', $proyecto)->with('success', '¡Proyecto actualizado!');
     }
 
     /**
