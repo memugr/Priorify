@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Priorify</title>
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.webp">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.webp">de mo
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="public/temas/temas.css">
