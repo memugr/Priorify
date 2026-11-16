@@ -24,17 +24,26 @@
         <h2 class="text-center font-titulo font-bold text-lavanda text-xl">No te preocupes,<br>¡Ocúpate!</h2>
     </div>
 
-    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve" action="{{ route('index') }}" method="get">
+    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 border-carbon bg-nieve"
+        action="{{ route('login.submit') }}" method="post">
+        @csrf
+
+        @if (session('Error'))
+            <div class="m-8 text-coral font-bold text-sm">
+                {{ session('Error') }}
+            </div>
+        @endif
+
         <div class="m-8">
             <label for="email" class="block mb-2.5 text-sm font-bold font-titulo text-heading">Tu email</label>
-            <input type="email" id="email"
+            <input type="email" id="email" name="email" value="{{ old('email') }}"
                 class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="tuemail@gmail.com" required />
         </div>
 
         <div class="m-8">
             <label for="password" class="block mb-2.5 text-sm font-titulo font-bold text-heading">Tu contraseña</label>
-            <input type="password" id="password"
+            <input type="password" id="password" name="password"
                 class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="••••••••" required />
         </div>

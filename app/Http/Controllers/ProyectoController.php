@@ -10,9 +10,20 @@ class ProyectoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $buscar = $request->input('buscar');
+
+        $proyectos = Proyecto::query()
+            ->when($buscar, function ($query) use ($buscar) {
+                $query->where(function ($q) use ($buscar) {
+                    $q->where('nombre', 'like', "%{$buscar}%")
+                        ->orWhere('descripcion', 'like', "%{$buscar}%");
+                });
+            })
+            ->get();
+
+        return view('proyectos', compact('proyectos', 'buscar'));
     }
 
     /**
