@@ -1,0 +1,51 @@
+@extends('layouts.plantilla_main')
+
+@section('title', $proyecto->nombre)
+
+@section('content')
+    <div class="bg-turquesa border-3 border-carbon rounded-lg p-6 shadow-[6px_6px_0px_#C693FF]">
+        <h1 class="text-3xl font-titulo font-bold mb-2">
+            {{ $proyecto->nombre }}
+        </h1>
+
+        <p class="mb-4">
+            {{ $proyecto->descripcion ?: 'Sin descripción' }}
+        </p>
+
+        <!-- Iconos -->
+        <div class="flex items-center justify-end gap-2">
+            <!-- Editar -->
+            <button type="button" title="Editar" aria-label="Editar"
+                class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-mostaza cursor-pointer"
+                data-modal-target="modificar-proyecto-modal" data-modal-toggle="modificar-proyecto-modal">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+            </button>
+
+            <!-- Eliminar -->
+            <button type="button" title="Eliminar" aria-label="Eliminar"
+                class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-red-300 cursor-pointer">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 6h18" />
+                    <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6M14 11v6" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <a href="{{ route('proyectos.index') }}"
+        class="inline-block mt-6 px-6 py-2 bg-nieve border-3 border-carbon rounded-md hover:bg-mostaza font-semibold">
+        ← Volver a proyectos
+    </a>
+
+    @include('modals.modificarProyecto')
+@endsection
+
+

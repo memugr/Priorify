@@ -1,10 +1,10 @@
-<div id="crud-proyecto-modal" tabindex="-1" aria-hidden="true"
+<div id="crear-proyecto-modal" tabindex="-1" aria-hidden="true"
     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-md max-h-full">
         <div class="relative bg-turquesa border-3 border-carbon rounded-lg p-8 shadow-[6px_6px_0px_#C693FF]">
 
             <!-- Cerrar -->
-            <button type="button" data-modal-hide="crud-proyecto-modal"
+            <button type="button" data-modal-hide="crear-proyecto-modal"
                 class="absolute top-3 right-4 font-titulo font-bold text-xl hover:text-lavanda">✕</button>
 
             <form action="{{ route('proyectos.store') }}" method="POST" class="space-y-5">

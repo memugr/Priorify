@@ -118,7 +118,7 @@
                     <li>
                         <button
                             class="flex items-center w-full px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand cursor-pointer"
-                            type="button" data-modal-target="crud-proyecto-modal" data-modal-toggle="crud-proyecto-modal">
+                            type="button" data-modal-target="crear-proyecto-modal" data-modal-toggle="crear-proyecto-modal">
                             <span class="ms-3">Crear proyecto</span>
                         </button>
                     </li>

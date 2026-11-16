@@ -26,38 +26,36 @@
 
     <!-- Llista de projectes -->
     <div class="space-y-6 mt-8">
-    @if ($proyectos->isEmpty())
-        <div class="bg-nieve border-3 border-carbon rounded-lg p-8 text-center">
-            <h2 class="font-titulo text-2xl font-bold mb-2">
-                No hay proyectos
-            </h2>
-            <p>
-                Crea tu primer proyecto para empezar.
-            </p>
-        </div>
-    @else
-        @foreach ($proyectos as $proyecto)
-            <div
-                class="w-[90%] mx-auto bg-turquesa border-3 border-carbon rounded-lg p-5 shadow-[6px_6px_0px_#C693FF] 
-                        hover:translate-y-[-2px] transition-all">
-
-                <div class="flex flex-col justify-between">
-                    <!-- Esquerra -->
-                    <div class="flex items-center gap-4">
-                        <h3 class="text-2xl font-titulo font-bold">
-                            {{ $proyecto->nombre }}
-                        </h3>
-                    </div>
-
-                    <!-- Informació -->
-                    <div class="flex items-center gap-10">
-                        <span class="font-semibold text-sm">
-                            {{ $proyecto->descripcion }}
-                        </span>
-                    </div>
-                </div>
+        @if ($proyectos->isEmpty())
+            <div class="bg-nieve border-3 border-carbon rounded-lg p-8 text-center">
+                <h2 class="font-titulo text-2xl font-bold mb-2">
+                    No hay proyectos
+                </h2>
+                <p>
+                    Crea tu primer proyecto para empezar.
+                </p>
             </div>
-        @endforeach
-    @endif
-</div>
+        @else
+            @foreach ($proyectos as $proyecto)
+                <a href="{{ route('proyectos.show', $proyecto) }}"
+                    class="block w-[90%] mx-auto bg-turquesa border-3 border-carbon rounded-lg p-5 shadow-[6px_6px_0px_#C693FF]
+                hover:translate-y-[-2px] transition-all">
+
+                    <div class="flex flex-col justify-between">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-2xl font-titulo font-bold">
+                                {{ $proyecto->nombre }}
+                            </h3>
+                        </div>
+
+                        <div class="flex items-center gap-10">
+                            <span class="font-semibold text-sm">
+                                {{ $proyecto->descripcion }}
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        @endif
+    </div>
 @endsection

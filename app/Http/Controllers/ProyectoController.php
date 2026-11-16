@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Proyecto;
+use App\Models\Usuario_proyecto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ProyectoController extends Controller
@@ -50,6 +53,12 @@ class ProyectoController extends Controller
         $proyecto->fecha_entrega = $request->input('fecha_entrega');
         $proyecto->save();
 
+        $usuarioProyecto = new Usuario_proyecto();
+        $usuarioProyecto->id_usuario_proyecto = Auth::id(); 
+        $usuarioProyecto->id_proyecto_usuario = $proyecto->id_proyecto;
+        $usuarioProyecto->id_rol_proyecto = 1; // Asignar el rol de administrador (1) al usuario que crea el proyecto
+        $usuarioProyecto->save();
+
         return redirect()->route('proyectos.index')->with('success', '¡Proyecto creado!');
     }
 
@@ -59,6 +68,7 @@ class ProyectoController extends Controller
     public function show(Proyecto $proyecto)
     {
         //
+        return view('proyecto', compact('proyecto'));
     }
 
     /**
@@ -75,6 +85,12 @@ class ProyectoController extends Controller
     public function update(Request $request, Proyecto $proyecto)
     {
         //
+        $proyecto->nombre = Str::ucfirst(trim($request->input('nombre')));
+        $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+        $proyecto->fecha_entrega = $request->input('fecha_entrega');
+        $proyecto->save();  
+
+        return redirect()->route('proyectos.show', $proyecto)->with('success', '¡Proyecto actualizado!');
     }
 
     /**
