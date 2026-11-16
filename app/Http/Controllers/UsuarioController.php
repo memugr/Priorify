@@ -44,7 +44,7 @@ class UsuarioController extends Controller
             'email.unique'            => 'Este correo electrónico ya está registrado.',
             'password.required'       => 'Debes introducir una contraseña.',
             'password.confirmed'      => 'Las contraseñas no coinciden.',
-            'password.min'            => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.min'            => 'La contraseña debe tener al menos 6 caracteres.',
         ]);
     
 
