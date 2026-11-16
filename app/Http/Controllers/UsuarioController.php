@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Utils\Validacio;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -28,29 +31,43 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
-        'nombre_usuario' => 'required',
-        'email'          => 'required|email',
-        'password'       => 'required|confirmed', // <--- Exige que password coincida con password_confirmation
-    ], [
-        'password.confirmed' => 'Las contraseñas no coinciden.',
-    ]
+            'nombre_usuario' => 'required|unique:usuarios,nombre_usuario',
+            'email'          => 'required|email|unique:usuarios,email',
+            'password'       => 'required|min:6|confirmed',
+        ], [
+            'nombre_usuario.required' => 'El nombre de usuario es obligatorio.',
+            'nombre_usuario.unique'   => 'Este nombre de usuario ya está en uso.',
+            'email.required'          => 'El correo electrónico es obligatorio.',
+            'email.email'             => 'Introduce un correo electrónico válido.',
+            'email.unique'            => 'Este correo electrónico ya está registrado.',
+            'password.required'       => 'Debes introducir una contraseña.',
+            'password.confirmed'      => 'Las contraseñas no coinciden.',
+            'password.min'            => 'La contraseña debe tener al menos 6 caracteres.',
+        ]);
     
-    );
 
         $usuario = new Usuario();
         $usuario->nombre_usuario = $request->input('nombre_usuario');
         $usuario->email = $request->input('email');
-        $usuario->password = bcrypt($request->input('password'));
-        $usuario->fecha_creacion = now();
-        $usuario->save();
+        $usuario->password = Hash::make($request->input('password'));
+        $usuario->fecha_creacion = now()->format('Ymd H:i:s');
+        try{
+            $usuario->save();
+            session()->flash('success', '¡Te has registrado correctamente! Ya puedes iniciar sesión.');
+        } catch (QueryException $e) {
+            $errorMessage = Validacio::missatgeError($e);
+            session()->flash('error', $errorMessage);
+        }
 
-        return redirect()->back()->with('exito', '¡Te has registrado correctamente! Ya puedes iniciar sesión.');
+        return redirect()->route('registro');
     }
 
     /**
      * Display the specified resource.
      */
+
     public function show(Usuario $usuario)
     {
         //

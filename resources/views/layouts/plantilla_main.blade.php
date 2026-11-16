@@ -116,10 +116,11 @@
                     </li>
 
                     <li>
-                        <a href="#"
-                            class="flex items-center px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand">
+                        <button
+                            class="flex items-center w-full px-2 py-1.5 text-body border-2 rounded-sm hover:bg-mostaza hover:text-fg-brand cursor-pointer"
+                            type="button" data-modal-target="crear-proyecto-modal" data-modal-toggle="crear-proyecto-modal">
                             <span class="ms-3">Crear proyecto</span>
-                        </a>
+                        </button>
                     </li>
 
                     <li>
@@ -149,6 +150,9 @@
             @yield('content')
         </div>
     </div>
+
+    <!-- Modal Crear Proyecto -->
+    @include('modals.crearProyecto')
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     @stack('scripts')

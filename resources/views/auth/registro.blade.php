@@ -23,12 +23,29 @@
         <img class="m-8" src="/img/logo_largo.webp" alt="Logo Priorify">
     </div>
 
-    @if (session('exito'))
-        <div class= "flex justify-center text-lavanda text-fg-brand font-titulo font-bold">
-            {{ session('exito') }}
-        </div>
-    @endif
-    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 text:lavanda"
+    <div class="max-w-sm mx-auto mt-4">
+        @if (session('success'))
+            <p class="bg-lavanda text-verde_hada font-bold text-sm mt-1 block">
+                {{ session('success') }}
+            </p>
+        @endif
+
+        @if (session('error'))
+            <p class="text-coral font-bold text-sm mt-1 block">
+                {{ session('error') }}
+            </p>
+        @endif
+
+        @if ($errors->any())
+            <ul class="text-coral font-bold text-sm mt-1 block">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+    
+    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 bg-nieve text:lavanda"
         action="{{ route('usuario.store') }}" method="POST">
         @csrf
         <div class="m-8">
@@ -59,11 +76,6 @@
             <input type="password" name= "password_confirmation" id="password_confirmation"
                 class="bg-nieve border-2 rounded-sm border-carbon font-cuerpo text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-chicle"
                 placeholder="••••••••" required />
-            @error('password')
-                <span class="text-coral font-bold text-sm mt-1 block">
-                    {{ $message }}
-                </span>
-            @enderror
         </div>
 
 
