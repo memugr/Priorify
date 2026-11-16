@@ -40,7 +40,7 @@
                         Crear tarea
                     </a>
                     <!-- Botó Crear Projecte -->
-                    <button type="button" data-modal-target="crud-proyecto-modal" data-modal-toggle="crud-proyecto-modal"
+                    <button type="button" data-modal-target="crear-proyecto-modal" data-modal-toggle="crear-proyecto-modal"
                         class="px-8 py-3 bg-turquesa border-3 border-carbon rounded-md hover:bg-mostaza shadow-[6px_6px_0px_#C693FF] 
                                 font-semibold flex items-center gap-2">
                         <img src="/img/plus.svg" alt="Plus" class="w-7 h-7">
@@ -159,4 +159,6 @@
             </button>
         </div>
     </div>
+
+    @include('modals.crearProyecto')
 @endsection
