@@ -12,13 +12,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/', function () {
     return view('auth.login'); });
 
-    Route::resource('usuario', UsuarioController::class);
 });
 
 Route::resource('usuario', UsuarioController::class);
 Route::get('/plantilla', [PlantillaController::class, 'show']);
 Route::get('/login',[LoginController::class,'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-Route::get('/caca', [CacaController::class, 'showCaca'])->name('caca');
 Route::get('/registro', [RegistroController::class, 'showRegistro'])->name('registro');
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
