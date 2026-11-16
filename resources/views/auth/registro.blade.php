@@ -45,7 +45,7 @@
         @endif
     </div>
     
-    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 text:lavanda"
+    <form class="max-w-sm mx-auto rounded-md border-separate m-8 border-4 bg-nieve text:lavanda"
         action="{{ route('usuario.store') }}" method="POST">
         @csrf
         <div class="m-8">
