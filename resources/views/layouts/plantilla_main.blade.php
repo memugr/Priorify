@@ -41,7 +41,7 @@
                 </div>
 
                 <div>
-                    <h2 class="text-lg font-titulo font-semibold whitespace-nowrap text-lavanda">¡Bienvenido, Cliente!
+                    <h2 class="text-lg font-titulo font-semibold whitespace-nowrap text-lavanda">¡Bienvenido, {{ Auth::user()->nombre_usuario }}!
                     </h2>
                 </div>
 
@@ -64,10 +64,10 @@
                             id="dropdown-user">
                             <div class="px-4 py-3 border-b border-default-medium" role="none">
                                 <p class="text-sm font-medium font-titulo text-carbon text-heading" role="none">
-                                
+                                    {{ Auth::user()->nombre_usuario }}
                                 </p>
                                 <p class="text-sm text-cuerpo truncate" role="none">
-                                    Rigotares@gmail.com
+                                    {{ Auth::user()->email }}
                                 </p>
                             </div>
                             <ul class="p-2 text-sm text-cuerpo font-medium" role="none">
@@ -87,7 +87,7 @@
                                         role="menuitem">Notificaciones</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('logout') }}"
                                         class="inline-flex font-titulo items-center w-full p-2 hover:bg-chicle hover:text-heading rounded"
                                         role="menuitem">Salir</a>
                                 </li>
