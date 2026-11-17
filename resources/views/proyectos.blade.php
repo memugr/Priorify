@@ -3,6 +3,18 @@
 @section('title', 'Proyectos')
 
 @section('content')
+    @if (session('success'))
+        <div class="mb-6 bg-[#B9E296] border-3 border-carbon rounded-md px-4 py-3 font-semibold">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="mb-6 bg-[#FBAABA] border-3 border-carbon rounded-md px-4 py-3 font-semibold">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!-- Cercador -->
     <form class="flex-1" method="GET" action="{{ route('proyectos.index') }}">
         <div class="relative">
@@ -53,6 +65,19 @@
                                 {{ $proyecto->descripcion }}
                             </span>
                         </div>
+
+                        @if ($proyecto->fecha_entrega)
+                            <div class="flex flex-col items-end gap-2 min-w-[140px]">
+                                <h3 class="text-sm font-bold uppercase tracking-wide text-carbon">
+                                    Fecha de entrega
+                                </h3>
+                                <span
+                                    class="bg-mostaza border-3 border-carbon rounded-lg px-4 py-2
+                                font-titulo text-md">
+                                    {{ \Carbon\Carbon::parse($proyecto->fecha_entrega)->format('d/m/Y') }}
+                                </span>
+                            </div>
+                        @endif
                     </div>
                 </a>
             @endforeach
