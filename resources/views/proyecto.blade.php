@@ -3,6 +3,17 @@
 @section('title', $proyecto->nombre)
 
 @section('content')
+    @if (session('success'))
+        <div class="mb-6 bg-[#B9E296] border-3 border-carbon rounded-md px-4 py-3 font-semibold">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="mb-6 bg-[#FBAABA] border-3 border-carbon rounded-md px-4 py-3 font-semibold">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="bg-turquesa border-3 border-carbon rounded-lg p-6 shadow-[6px_6px_0px_#C693FF]">
         <h1 class="text-3xl font-titulo font-bold mb-2">
             {{ $proyecto->nombre }}
@@ -26,17 +37,22 @@
             </button>
 
             <!-- Eliminar -->
-            <button type="button" title="Eliminar" aria-label="Eliminar"
-                class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-red-300 cursor-pointer">
-                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M3 6h18" />
-                    <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" />
-                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                    <path d="M10 11v6M14 11v6" />
-                </svg>
-            </button>
+            <form method="POST" action="{{ route('proyectos.destroy', $proyecto) }}"
+                onsubmit="return confirm('¿Seguro que quieres eliminar este proyecto?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" title="Eliminar" aria-label="Eliminar"
+                    class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-red-300 cursor-pointer">
+                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M3 6h18" />
+                        <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" />
+                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                        <path d="M10 11v6M14 11v6" />
+                    </svg>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -47,5 +63,3 @@
 
     @include('modals.modificarProyecto')
 @endsection
-
-
