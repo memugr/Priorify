@@ -15,9 +15,15 @@
         </div>
     @endif
     <div class="bg-turquesa border-3 border-carbon rounded-lg p-6 shadow-[6px_6px_0px_#C693FF]">
-        <h1 class="text-3xl font-titulo font-bold mb-2">
-            {{ $proyecto->nombre }}
-        </h1>
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+            <h1 class="text-3xl font-titulo font-bold">
+                {{ $proyecto->nombre }}
+            </h1>
+
+            <p class="shrink-0 px-3 py-1 bg-nieve border-2 border-carbon rounded-md text-md font-semibold">
+                Creado por: {{ $admin ?? 'Desconocido' }}
+            </p>
+        </div>
 
         <p class="mb-4">
             {{ $proyecto->descripcion ?: 'Sin descripción' }}
@@ -29,8 +35,9 @@
             <button type="button" title="Editar" aria-label="Editar"
                 class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-mostaza cursor-pointer"
                 data-modal-target="modificar-proyecto-modal" data-modal-toggle="modificar-proyecto-modal">
-                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
                     <path d="M12 20h9" />
                     <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                 </svg>
