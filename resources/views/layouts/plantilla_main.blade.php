@@ -72,9 +72,9 @@
                             </div>
                             <ul class="p-2 text-sm text-cuerpo font-medium" role="none">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('index') }}"
                                         class="inline-flex font-titulo items-center w-full p-2 hover:bg-chicle hover:text-heading rounded"
-                                        role="menuitem">Dashboard</a>
+                                        role="menuitem">Inicio</a>
                                 </li>
                                 <li>
                                     <a href="#"
