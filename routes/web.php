@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function(){
     Route::get('/', function () { return view('auth.login'); });
     Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
-    Route::resource('/proyectos', ProyectoController::class);
+    Route::resource('proyectos', ProyectoController::class);
 });
 
 //Rutas públicas
@@ -21,6 +21,3 @@ Route::get('/login',[LoginController::class,'show'])->name('login'); // Abigail
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::get('/registro', [RegistroController::class, 'showRegistro'])->name('registro');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
-// PROYECTOS 
- // Mostrar lista de proyectos

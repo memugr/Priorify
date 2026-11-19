@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class TareaController extends Controller
 {
@@ -52,8 +54,39 @@ class TareaController extends Controller
      */
     public function update(Request $request, Tarea $tarea)
     {
-        //
+        $proyecto = $tarea->proyecto;
+
+        $esCreador = $tarea->creador_tarea_id === Auth::id();
+        $esAdminProyecto = $this->esAdmin($proyecto);
+
+        if (!$esCreador && !$esAdminProyecto) {
+            $respuesta = redirect()
+                ->route('proyectos.show', $proyecto)
+                ->with('error', 'No tienes permisos para editar esta tarea.');
+        } else {
+            $request->validate([
+                'titulo' => 'required|string|max:255',
+                'descripcion' => 'nullable|string',
+                'estado_id' => 'required|exists:estados,id_estado',
+                'prioridad' => 'nullable|string',
+                'fecha_vencimiento' => 'nullable|date',
+            ]);
+
+            $tarea->titulo = Str::ucfirst(trim($request->input('titulo')));
+            $tarea->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+            $tarea->estado_id = $request->input('estado_id');
+            $tarea->prioridad = $request->input('prioridad');
+            $tarea->fecha_vencimiento = $request->input('fecha_vencimiento') ?: null;
+            $tarea->save();
+
+            $respuesta = redirect()
+                ->route('proyectos.show', $proyecto)
+                ->with('success', '¡Tarea actualizada!');
+        }
+        return $respuesta;
     }
+
+
 
     /**
      * Remove the specified resource from storage.
