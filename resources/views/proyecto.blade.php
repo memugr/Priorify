@@ -43,6 +43,20 @@
                 </svg>
             </button>
 
+
+            <!-- Gestionar Miembros (Admin)-->
+            @if ($esAdmin)
+                <button type="button" title="Miembros" aria-label="Miembros"
+                    class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-mostaza cursor-pointer"
+                    data-modal-target="gestionar-miembros-modal" data-modal-toggle="gestionar-miembros-modal">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                    </svg>
+                </button>
+            @endif
+
             <!-- Eliminar -->
             <form method="POST" action="{{ route('proyectos.destroy', $proyecto) }}"
                 onsubmit="return confirm('¿Seguro que quieres eliminar este proyecto?');">
@@ -69,4 +83,5 @@
     </a>
 
     @include('modals.modificarProyecto')
+    @include('modals.gestionarMiembros')
 @endsection

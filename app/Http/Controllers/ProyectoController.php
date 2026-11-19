@@ -68,16 +68,78 @@ class ProyectoController extends Controller
      */
     public function show(Proyecto $proyecto)
     {
-        //Buscar el id del admin por el id del proyecto (Tabla Usuario_proyecto) SELECT
+        // SECCIÓN "CREADO POR" (View de un proyecto)
+        // Buscar el id del admin por el id del proyecto (Tabla Usuario_proyecto) SELECT
         $idAdmin = Usuario_proyecto::where('id_proyecto_usuario', $proyecto->id_proyecto)
             ->where('id_rol_proyecto', 1)
             ->value('id_usuario_proyecto');
 
-        //Buscar el nom del admin
+        // Buscar el nom del admin
         $admin = Usuario::find($idAdmin)?->nombre_usuario;
 
+        // MODAL: Gestionar Miembros (Admin) 
+        // Buscar todos los usuarios de la BDD
+        $usuarios = Usuario::orderBy('nombre_usuario')->get();
+
+        // Listado de miembros
+        $miembros = Usuario::join('usuarios_proyecto', 
+        'usuarios.id_usuario', '=', 'usuarios_proyecto.id_usuario_proyecto'
+        )->where('usuarios_proyecto.id_proyecto_usuario', $proyecto->id_proyecto)
+            ->select('usuarios.*')
+            ->get();
+
+        //Saber si es admin y mostrar el botón de gestionar los miembros
+        $esAdmin = $this->esAdmin($proyecto);
+
         //Retorna el proyecto i quien es su admin
-        return view('proyecto', compact('proyecto', 'admin'));
+        return view('proyecto', compact('proyecto', 'admin', 'usuarios', 'miembros', 'esAdmin'));
+    }
+
+    /**
+     * Añadir miembro
+     */
+    public function agregarMiembro(Request $request, Proyecto $proyecto)
+    {
+        if (!$this->esAdmin($proyecto)) {
+            $missatge = back()->with('error', 'No tienes permisos.');
+        } else {
+            // Comprovem si el usuario forma parte del proyecto
+            $existe = Usuario_proyecto::where('id_usuario_proyecto', $request->usuario)
+                ->where('id_proyecto_usuario', $proyecto->id_proyecto)
+                ->exists();
+
+            // Añadir miembro
+            if (!$existe) {
+                $nuevoMiembro = new Usuario_proyecto();
+                $nuevoMiembro->id_usuario_proyecto = $request->usuario;
+                $nuevoMiembro->id_proyecto_usuario = $proyecto->id_proyecto;
+                $nuevoMiembro->id_rol_proyecto = 2; // Rol de membre normal
+                $nuevoMiembro->save();
+            }
+
+            $missatge = back()->with('success', 'Miembro añadido.');
+        }
+
+        return $missatge;
+    }
+
+    /**
+     * Eliminar miembro
+     */
+    public function eliminarMiembro(Proyecto $proyecto, $id_usuario)
+    {
+        if (!$this->esAdmin($proyecto)) {
+            $missatge = back()->with('error', 'No tienes permisos.');
+        } else {
+            Usuario_proyecto::where('id_usuario_proyecto', $id_usuario)
+            ->where('id_proyecto_usuario', $proyecto->id_proyecto
+            )->where('id_rol_proyecto', '!=', 1
+            )->delete();
+
+            $missatge = back()->with('success', 'Miembro eliminado.');
+        }
+
+        return $missatge;
     }
 
     /**
