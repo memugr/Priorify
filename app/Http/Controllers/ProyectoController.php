@@ -93,9 +93,9 @@ class ProyectoController extends Controller
 
         //Saber si es admin y mostrar el botón de gestionar los miembros
         $esAdmin = $this->esAdmin($proyecto);
-      
+        
         //Estados de tareas
-        $estados = Estado::orderBy('orden', asc)->get();
+        $estados = Estado::orderBy('orden', 'asc')->get();
 
         //Retorna el proyecto i quien es su admin
         return view('proyecto', compact('proyecto', 'admin', 'usuarios', 'miembros', 'esAdmin', 'estados'));
