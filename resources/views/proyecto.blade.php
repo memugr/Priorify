@@ -31,6 +31,14 @@
 
         <!-- Iconos -->
         <div class="flex items-center justify-end gap-2">
+
+            <!-- Añadir tarea -->
+            <button type="button" title="Añadir tarea" aria-label="Añadir tarea"
+                class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-mostaza cursor-pointer"
+                data-modal-target="crear-tarea-modal" data-modal-toggle="crear-tarea-modal">
+                <img src="{{ asset('img/plus.svg') }}" alt="Plus" class="w-6 h-6">
+            </button>
+
             <!-- Editar -->
             <button type="button" title="Editar" aria-label="Editar"
                 class="p-2 bg-nieve border-2 border-carbon rounded-md hover:bg-mostaza cursor-pointer"
@@ -77,11 +85,8 @@
         </div>
     </div>
 
-    <a href="{{ route('proyectos.index') }}"
-        class="inline-block mt-6 px-6 py-2 bg-nieve border-3 border-carbon rounded-md hover:bg-mostaza font-semibold">
-        ← Volver a proyectos
-    </a>
 
     @include('modals.modificarProyecto')
     @include('modals.gestionarMiembros')
+    @include('modals.crearTarea')
 @endsection

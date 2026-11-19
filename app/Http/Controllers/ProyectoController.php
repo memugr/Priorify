@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Estado;
 
 class ProyectoController extends Controller
 {
@@ -30,7 +31,9 @@ class ProyectoController extends Controller
 
         $proyectos = $query->orderBy('nombre', 'asc')->get();
         return view('proyectos', compact('proyectos', 'request'));
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -90,9 +93,12 @@ class ProyectoController extends Controller
 
         //Saber si es admin y mostrar el botón de gestionar los miembros
         $esAdmin = $this->esAdmin($proyecto);
+      
+        //Estados de tareas
+        $estados = Estado::orderBy('orden', asc)->get();
 
         //Retorna el proyecto i quien es su admin
-        return view('proyecto', compact('proyecto', 'admin', 'usuarios', 'miembros', 'esAdmin'));
+        return view('proyecto', compact('proyecto', 'admin', 'usuarios', 'miembros', 'esAdmin', 'estados'));
     }
 
     /**
@@ -140,6 +146,9 @@ class ProyectoController extends Controller
         }
 
         return $missatge;
+        $estados = Estado::orderBy('orden', 'asc')->get();
+
+        return view('proyecto', compact('proyecto', 'estados'));
     }
 
     /**
