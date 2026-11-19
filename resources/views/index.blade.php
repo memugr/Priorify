@@ -33,12 +33,12 @@
                     </form>
 
                     <!-- Botó Crear Tasca -->
-                    <a href=""
+                    <button type="button" data-modal-target="crear-tarea-modal" data-modal-toggle="crear-tarea-modal"
                         class="px-8 py-3 bg-turquesa border-3 border-carbon rounded-md hover:bg-mostaza shadow-[6px_6px_0px_#C693FF] 
                                 font-semibold flex items-center gap-2">
                         <img src="/img/plus.svg" alt="Plus" class="w-7 h-7">
                         Crear tarea
-                    </a>
+                    </button>
                     <!-- Botó Crear Projecte -->
                     <button type="button" data-modal-target="crud-proyecto-modal" data-modal-toggle="crud-proyecto-modal"
                         class="px-8 py-3 bg-turquesa border-3 border-carbon rounded-md hover:bg-mostaza shadow-[6px_6px_0px_#C693FF] 
@@ -159,4 +159,6 @@
             </button>
         </div>
     </div>
+
+    
 @endsection

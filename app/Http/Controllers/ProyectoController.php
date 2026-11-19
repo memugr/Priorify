@@ -8,6 +8,7 @@ use App\Models\Usuario_proyecto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Estado;
 
 class ProyectoController extends Controller
 {
@@ -29,7 +30,9 @@ class ProyectoController extends Controller
 
         $proyectos = $query->orderBy('nombre', 'asc')->get();
         return view('proyectos', compact('proyectos', 'request'));
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -67,8 +70,9 @@ class ProyectoController extends Controller
      */
     public function show(Proyecto $proyecto)
     {
-        //
-        return view('proyecto', compact('proyecto'));
+        $estados = Estado::orderBy('orden', 'asc')->get();
+
+        return view('proyecto', compact('proyecto', 'estados'));
     }
 
     /**

@@ -12,7 +12,8 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        $estados = Estado::orderBy('orden', 'asc')->get();
+        return view('modals.crearTarea', compact('estados'));
     }
 
     /**
