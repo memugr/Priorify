@@ -15,6 +15,12 @@ class Usuario_proyecto extends Model
     protected $primaryKey = 'id_gestor';
     public $timestamps = false;
 
+    protected $fillable = [
+        'id_usuario_proyecto',
+        'id_proyecto_usuario',
+        'id_rol_proyecto',
+    ];
+
     //Relación ternaria entre Usuarios, Roles y Proyectos
 
     /**
