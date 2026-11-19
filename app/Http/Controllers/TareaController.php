@@ -54,7 +54,6 @@ class TareaController extends Controller
         return redirect()->route('proyectos.show', $proyecto)
             ->with('success', '¡Tarea creada!');
     }
-    }
 
     /**
      * Display the specified resource.
@@ -108,8 +107,6 @@ class TareaController extends Controller
         }
         return $respuesta;
     }
-
-
 
     /**
      * Remove the specified resource from storage.
