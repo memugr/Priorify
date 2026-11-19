@@ -84,17 +84,35 @@ class ProyectoController extends Controller
     }
 
     /**
+     * Determine if the authenticated user is an admin of the specified project.
+     */
+    private function esAdmin(Proyecto $proyecto): bool
+    {
+        $usuarioProyecto = Usuario_proyecto::where('id_usuario_proyecto', Auth::id())
+            ->where('id_proyecto_usuario', $proyecto->id_proyecto)
+            ->first();
+
+        return $usuarioProyecto && $usuarioProyecto->id_rol_proyecto == 1;
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Proyecto $proyecto)
     {
         //
-        $proyecto->nombre = Str::ucfirst(trim($request->input('nombre')));
-        $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
-        $proyecto->fecha_entrega = $request->input('fecha_entrega');
-        $proyecto->save();  
+        if (!$this->esAdmin($proyecto)) {
+            $resposta = redirect()->route('proyectos.show', $proyecto)->with('error', 'No tienes permisos para editar este proyecto.');
+        } else {
+            $proyecto->nombre = Str::ucfirst(trim($request->input('nombre')));
+            $proyecto->descripcion = Str::ucfirst(trim($request->input('descripcion', '')));
+            $proyecto->fecha_entrega = $request->input('fecha_entrega');
+            $proyecto->save();
 
-        return redirect()->route('proyectos.show', $proyecto)->with('success', '¡Proyecto actualizado!');
+            $resposta = redirect()->route('proyectos.show', $proyecto)->with('success', '¡Proyecto actualizado!');
+        }
+
+        return $resposta;
     }
 
     /**
@@ -103,5 +121,15 @@ class ProyectoController extends Controller
     public function destroy(Proyecto $proyecto)
     {
         //
+        if (!$this->esAdmin($proyecto)) {
+            $resposta = redirect()->route('proyectos.show', $proyecto)->with('error', 'No tienes permisos para eliminar este proyecto.');
+        } else {
+            Usuario_proyecto::where('id_proyecto_usuario', $proyecto->id_proyecto)->delete();
+            $proyecto->delete();
+            
+            $resposta = redirect()->route('proyectos.index')->with('success', '¡Proyecto eliminado!');
+        }
+
+        return $resposta;
     }
 }

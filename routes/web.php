@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/', function () { return view('auth.login'); });
-    
+    Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
+    Route::resource('proyectos', ProyectoController::class);
 });
 
 //Rutas públicas
@@ -26,3 +27,4 @@ Route::post('/proyectos/{proyecto}/tareas', [TareaController::class, 'store'])
     ->name('tareas.store');
 // PROYECTOS 
 Route::resource('/proyectos', ProyectoController::class);
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
